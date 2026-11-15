@@ -12,6 +12,4 @@ const nextConfig = {
     ];
   },
 };
-
-const withNextOnPages = require('@cloudflare/next-on-pages');
-module.exports = withNextOnPages(nextConfig);
+module.exports = nextConfig;
