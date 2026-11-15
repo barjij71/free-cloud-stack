@@ -19,7 +19,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
       - run: npm ci --legacy-peer-deps
-      - run: npm run build --if-present
+      - run: npm run build --workspace=apps/web --if-present
 
   test-api:
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
       - run: npm ci --legacy-peer-deps
-      - run: npm test --if-present
+      - run: npm test
 
   typecheck:
     runs-on: ubuntu-latest

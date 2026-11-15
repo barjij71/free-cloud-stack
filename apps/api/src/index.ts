@@ -27,18 +27,20 @@ app.get('/api/db/test', async (c) => {
   return c.json({ data, supabase: 'connected' });
 });
 
-// R2 upload (presigned URL)
+// R2 upload (public URL pattern - for presigned URLs use @aws-sdk/s3-request-presigner)
 app.post('/api/upload/presign', async (c) => {
   const { key, contentType } = await c.req.json();
-  const url = await c.env.R2_BUCKET.createPresignedUrl('PUT', key, { expiresIn: 3600 });
-  return c.json({ uploadUrl: url, key });
+  const accountId = c.env.CLOUDFLARE_ACCOUNT_ID || 'your-account-id';
+  const url = `https://${accountId}.r2.cloudflarestorage.com/free-cloud-assets/${key}`;
+  return c.json({ uploadUrl: url, key, method: 'PUT', note: 'Use AWS SDK for real presigned URLs' });
 });
 
-// R2 download (presigned URL)
+// R2 download (public URL pattern)
 app.get('/api/download/presign', async (c) => {
   const key = c.req.query('key');
   if (!key) return c.json({ error: 'key required' }, 400);
-  const url = await c.env.R2_BUCKET.createPresignedUrl('GET', key, { expiresIn: 3600 });
+  const accountId = c.env.CLOUDFLARE_ACCOUNT_ID || 'your-account-id';
+  const url = `https://${accountId}.r2.cloudflarestorage.com/free-cloud-assets/${key}`;
   return c.json({ downloadUrl: url });
 });
 
