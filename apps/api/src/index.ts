@@ -5,6 +5,7 @@ import { SupabaseClient, createClient } from '@supabase/supabase-js';
 type Bindings = {
   SUPABASE_URL: string;
   SUPABASE_ANON_KEY: string;
+  CLOUDFLARE_ACCOUNT_ID: string;
   R2_BUCKET: R2Bucket;
   KV: KVNamespace;
 };
