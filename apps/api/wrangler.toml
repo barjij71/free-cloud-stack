@@ -1,0 +1,13 @@
+name = "free-cloud-api"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ENVIRONMENT = "production"
+
+# Bindings configured via dashboard or wrangler secret put
+# SUPABASE_URL = ""
+# SUPABASE_ANON_KEY = ""
+# R2_BUCKET = { binding = "R2_BUCKET", bucket_name = "free-cloud-assets" }
+# KV_NAMESPACE = { binding = "KV", id = "..." }

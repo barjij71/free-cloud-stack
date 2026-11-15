@@ -1,0 +1,28 @@
+[project]
+ref = "your-project-ref"
+database_url = "postgresql://postgres:password@localhost:54322/postgres"
+
+[api]
+port = 54321
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[studio]
+port = 54323
+
+[inbucket]
+port = 54324
+smtp_port = 54325
+
+[auth]
+site_url = "https://your-pages-project.pages.dev"
+additional_redirect_urls = ["http://localhost:3000"]
+jwt_expiry = 3600
+enable_signup = true
+enable_anonymous_sign_ins = false
+
+[functions]
+port = 54326
